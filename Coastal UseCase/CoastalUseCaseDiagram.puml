@@ -1,0 +1,61 @@
+@startuml
+left to right direction
+skinparam usecase {
+BackgroundColor LightBlue
+BorderColor blue
+
+}
+
+package "Coastal Clean-up Service"  {
+  usecase "Register" as UC1
+  usecase "Volunteer Groups" as UC4
+    usecase "Equipment Details" as UC3
+  usecase "Volunteer Info" as UC5
+  usecase "Event Details" as UC2
+  usecase "Waste Details" as UC6
+
+}
+
+package Professional {
+  actor Coordinator as c
+  actor "Event Leader" as el
+  actor "Group Organiser" as go
+
+}
+
+package External {
+  actor Volunteer as v
+  actor "Equipment Volunteer" as ev
+  actor "Waste Partner" as wp
+
+}
+UC1 <-- v #line:green;
+UC2 <-- v #line:green;
+UC5 <-- v #line:green;
+v <|- ev #line:purple;
+UC3 <-- ev #line:purple;
+UC2 <-- wp #line:orange;
+UC6 <-- wp #line:orange;
+
+c <-- UC1 #line:red;
+c --> UC2 #line:red;
+c --> UC3 #line:red;
+c --> UC4 #line:red;
+c --> UC5 #line:red;
+c --> UC6 #line:red;
+el --> UC2 #line:blue;
+el --> UC5 #line:blue;
+el --> UC4 #line:blue;
+go -|> el #line:black;
+
+
+
+
+
+
+
+
+
+
+
+@enduml
